@@ -1,0 +1,9 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "/home/akshay/external/projects/shared/paho_mqtt_rpc/build/Release/generators/CMakePresets.json"
+    ]
+}
