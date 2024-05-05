@@ -12,7 +12,7 @@ Requirements:
 ```shell
 conan build .
 ```
-In case you encounter issues regarding build profile
+In case of build profile issues, execute:
 
 ```
 conan profile detect
