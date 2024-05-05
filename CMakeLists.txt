@@ -5,9 +5,12 @@ find_package(PahoMqttCpp CONFIG REQUIRED)
 
 include_directories(include)
 
+# Build skeleton as lib, which is consumed by server.
+# Skeleton uses paho libraries
 add_library(Skeleton STATIC src/skeleton.cpp)
 target_link_libraries(Skeleton PRIVATE PahoMqttCpp::paho-mqttpp3-static)
 
+# Build proxy as lib, which is used by the client app.
 add_library(Proxy STATIC src/proxy.cpp)
 target_link_libraries(Proxy PRIVATE PahoMqttCpp::paho-mqttpp3-static)
 
