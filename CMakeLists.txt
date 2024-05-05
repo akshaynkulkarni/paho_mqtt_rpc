@@ -3,14 +3,19 @@ project(paho_mqtt_rpc CXX)
 
 find_package(PahoMqttCpp CONFIG REQUIRED)
 
+include_directories(include)
 
-add_executable(paho_mqtt_rpc src/paho_mqtt_rpc.cpp src/main.cpp)
+# Build skeleton as lib, which is consumed by server.
+# Skeleton uses paho libraries
+add_library(Skeleton STATIC src/skeleton.cpp)
+target_link_libraries(Skeleton PRIVATE PahoMqttCpp::paho-mqttpp3-static)
 
-target_link_libraries(paho_mqtt_rpc PRIVATE PahoMqttCpp::paho-mqttpp3-static)
+# Build proxy as lib, which is used by the client app.
+add_library(Proxy STATIC src/proxy.cpp)
+target_link_libraries(Proxy PRIVATE PahoMqttCpp::paho-mqttpp3-static)
 
+add_executable(client src/client.cpp)
+target_link_libraries(client PRIVATE Proxy)
 
-install(TARGETS paho_mqtt_rpc DESTINATION "."
-        RUNTIME DESTINATION bin
-        ARCHIVE DESTINATION lib
-        LIBRARY DESTINATION lib
-        )
+add_executable(server src/server.cpp)
+target_link_libraries(server PRIVATE Skeleton)
