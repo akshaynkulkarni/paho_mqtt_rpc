@@ -4,6 +4,6 @@
         "conan": {}
     },
     "include": [
-        "/home/akshay/external/projects/shared/paho_mqtt_rpc/build/Release/generators/CMakePresets.json"
+        "/home/rstar900/git_repos/paho_mqtt_rpc/build/Release/generators/CMakePresets.json"
     ]
 }

@@ -18,7 +18,7 @@ class paho_mqtt_rpcRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "src/*"
+    exports_sources = "CMakeLists.txt", "src/*", "include/*"
 
     def layout(self):
         cmake_layout(self)
